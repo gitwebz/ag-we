@@ -46,7 +46,7 @@ def contact(request):
         subject = f"New Contact Form Submission from {name}"
         email_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
         from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['agrofer.info@gmail.com']
+        recipient_list = ['sariakhan7215@gmail.com']
 
         try:
             send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
@@ -116,7 +116,7 @@ def checkout(request, product_id):
                 admin_subject,
                 admin_message,
                 settings.EMAIL_HOST_USER,
-                ['agrofer.info@gmail.com'],
+                ['sariakhan7215@gmail.com'],
                 fail_silently=False,
             )
         except Exception as e:
