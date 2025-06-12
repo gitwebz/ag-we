@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'agroferfertilizers12345.up.railway.app',
+    'agroferfertilizers.up.railway.app',
     'greengrowfertilizer.shop',
     'agroferfertilizers12888.up.railway.app',
     'www.greengrowfertilizer.shop',
@@ -92,6 +93,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://agroferfertilizers12345.up.railway.app',
+    'https://agroferfertilizers.up.railway.app',
     'https://agroferfertilizers12888.up.railway.app',
     'https://greengrowfertilizer.shop',
     'https://www.greengrowfertilizer.shop',
