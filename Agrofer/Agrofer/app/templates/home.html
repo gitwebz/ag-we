@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title %}Home - Agrofer{% endblock %}
+{% block content %}
+<div id="page-content">
+    <!-- Sustainability Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8">Our Commitment to Sustainability</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">We repurpose human hair to create eco-friendly fertilizers, reducing waste and carbon emissions while empowering farmers.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-green-100 rounded-lg p-6">
+                    <p class="text-4xl font-bold text-green-600">10,000+</p>
+                    <p class="text-lg text-gray-600">Tons of Hair Recycled</p>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6">
+                    <p class="text-4xl font-bold text-green-600">1,000+</p>
+                    <p class="text-lg text-gray-600">Farmers Empowered</p>
+                </div>
+                <div class="bg-green-100 rounded-lg p-6">
+                    <p class="text-4xl font-bold text-green-600">20%</p>
+                    <p class="text-lg text-gray-600">CO2 Reduction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Snippet -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Who We Are</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-lg text-gray-600 mb-4">Agrofer was founded in 2024 to revolutionize agriculture by turning human hair into sustainable fertilizers.</p>
+                    <p class="text-lg text-gray-600">Our team of innovators works to create a circular economy, supporting farmers and the planet.</p>
+                    <a href="{% url 'about' %}" class="mt-6 inline-block text-green-600 font-semibold hover:underline">Learn More About Us</a>
+                </div>
+                <img src="/static/image1.jpg" alt="Team" class="w-full h-64 lg:h-96 object-cover rounded-lg">
+            </div>
+        </div>
+    </section>
+    <!-- Process Overview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">How We Make Fertilizers</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-green-900 mb-2">Hair Collection</h3>
+                    <p class="text-lg text-gray-600">We partner with salons to collect hair, preventing landfill waste.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-green-900 mb-2">Processing</h3>
+                    <p class="text-lg text-gray-600">Hair is cleaned and converted into a nitrogen-rich base.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-green-900 mb-2">Production</h3>
+                    <p class="text-lg text-gray-600">Blended with additives to create high-quality fertilizers.</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="{% url 'process' %}" class="text-green-600 font-semibold hover:underline">Explore Our Process</a>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Products -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Featured Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for product in products|slice:":3" %}
+                <a href="{% url 'product_detail' product.id %}" class="block">
+                  <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition transform hover:-translate-y-1">
+    <div class="w-full h-64 bg-gray-100 flex items-center justify-center rounded-lg mb-4">
+        <img src="{% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/600x400{% endif %}" alt="{{ product.name }}" class="max-h-full max-w-full object-contain rounded">
+    </div>
+    <h3 class="text-xl font-semibold text-green-900">{{ product.name }}</h3>
+    <p class="text-gray-600 mb-2">{{ product.description|truncatewords:10 }}</p>
+    <p class="text-green-600 font-bold">{{ product.price }} PKR</p>
+</div>
+
+                </a>
+                {% empty %}
+                <p class="text-gray-600 col-span-3 text-center">No products available.</p>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-8">
+                <a href="{% url 'products' %}" class="text-green-600 font-semibold hover:underline">View All Products</a>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8">What Farmers Say</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-lg text-gray-600 mb-4">"Agrofer’s fertilizers transformed my farm’s productivity!"</p>
+                    <p class="text-green-900 font-semibold">— Ahmed, Organic Farmer</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-lg text-gray-600 mb-4">"Sustainable and cost-effective. Highly recommend!"</p>
+                    <p class="text-green-900 font-semibold">— Sara, Agripreneur</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-lg text-gray-600 mb-4">"My soil is healthier than ever thanks to Agrofer."</p>
+                    <p class="text-green-900 font-semibold">— Bilal, Farmer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call to Action -->
+    <section class="py-16 bg-white text-green text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8">Join the Green Revolution</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Partner with Agrofer to create a sustainable future for agriculture.</p>
+            <a href="{% url 'contact' %}" class="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                Get in Touch
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} - Agrofer{% endblock %}
+{% block content %}
+<div id="page-content">
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="w-full h-96 bg-gray-100 flex items-center justify-center rounded-xl shadow-lg animate-on-scroll">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/600x400{% endif %}" alt="{{ product.name }}" class="max-h-full max-w-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <h1 class="text-4xl font-bold text-green-900 mb-4">{{ product.name }}</h1>
+                    <p class="text-2xl text-green-600 font-bold mb-4">Rs {{ product.price }}</p>
+                    <div class="text-lg text-gray-600 mb-6" style="white-space: pre-wrap;">{{ product.description|safe }}</div>
+                    <div class="mb-6">
+                        <p class="text-lg text-gray-600"><span class="font-semibold">Ideal for:</span> {{ product.name|lower|truncatewords:2 }} crops</p>
+                        <p class="text-lg text-gray-600"><span class="font-semibold">Nitrogen Content:</span> 15%</p>
+                        <p class="text-lg text-gray-600"><span class="font-semibold">Weight:</span> {{ product.weight }} kg</p>
+                        <p class="text-lg text-gray-600"><span class="font-semibold">Application:</span> Mix 100g per square meter of soil</p>
+                        <p class="text-lg text-gray-600"><span class="font-semibold">Shipping Fee:</span> Rs 199</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="{% url 'checkout' product.id %}" class="inline-block bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition transform hover:scale-105">Buy with COD</a>
+                        <a href="https://wa.me/+923104358786?text=I%20want%20to%20order%20{{ product.name }}%2C%20Price%3A%20Rs%20{{ product.price }}.%20Please%20confirm%20my%20order." target="_blank" class="inline-block bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-700 transition transform hover:scale-105">Buy via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <h2 class="text-3xl font-bold text-green-900 mb-6">Benefits of {{ product.name }}</h2>
+                <ul class="list-disc list-inside text-lg text-gray-600 space-y-2">
+                    <li>Eco-friendly and sustainable fertilizer made from human hair.</li>
+                    <li>Improves soil health with high nitrogen content.</li>
+                    <li>Ideal for {{ product.name|lower|truncatewords:2 }} crops, ensuring better yield.</li>
+                    <li>Reduces carbon footprint by recycling waste.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

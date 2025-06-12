@@ -1,0 +1,32 @@
+<!-- sustainability.html -->
+{% extends 'base.html' %}
+{% block title %}Sustainability - Agrofer{% endblock %}
+{% block content %}
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-green-900 mb-8 text-center">Sustainability at Agrofer</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <p class="text-lg text-gray-600 mb-4">We’re committed to a greener future by repurposing human hair into sustainable fertilizers, reducing landfill waste and carbon emissions.</p>
+                <p class="text-lg text-gray-600">Our partnerships with salons ensure a steady supply of raw materials, creating a circular economy.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1597089921060-4fb4d54c89b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sustainability" class="w-full h-96 object-cover rounded-lg">
+        </div>
+        <h2 class="text-3xl font-bold text-green-900 mb-6 text-center">Our Impact</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-green-100 rounded-lg p-6 text-center">
+                <p class="text-4xl font-bold text-green-600">10,000</p>
+                <p class="text-lg text-gray-600">Tons of Hair Recycled</p>
+            </div>
+            <div class="bg-green-100 rounded-lg p-6 text-center">
+                <p class="text-4xl font-bold text-green-600">1,000</p>
+                <p class="text-lg text-gray-600">Farmers Empowered</p>
+            </div>
+            <div class="bg-green-100 rounded-lg p-6 text-center">
+                <p class="text-4xl font-bold text-green-600">20%</p>
+                <p class="text-lg text-gray-600">CO2 Reduction</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,142 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agrofer - Sustainable Fertilizers{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+<!-- Navbar -->
+<nav class="bg-transparent text-white p-4 absolute top-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center flex-wrap">
+        <a href="{% url 'home' %}" class="flex items-center">
+            <img src="/static/agrofer_logo.png" alt="Agrofer Logo" class="h-24 w-auto drop-shadow-lg">
+            <span class="text-2xl font-extrabold text-white ml-3 tracking-wide">Agrofer</span>
+        </a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+        <div id="nav-menu" class="hidden fixed inset-0 bg-black bg-opacity-50 md:bg-transparent md:static md:flex md:items-center md:w-auto md:mt-100 md:mt-100">
+            <div class="flex flex-col w-1/2 md:w-auto h-full bg-green-900 md:bg-transparent rounded-l-lg md:rounded-none shadow-lg md:shadow-none absolute right-0 top-100 transform translate-x-full md:transform-none transition-transform duration-300">
+                <div class="flex justify-end p-4 md:hidden">
+                    <button onclick="toggleMenu()" class="text-white focus:outline-none">
+                        <svg class="w-6 h-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="pt-12 flex flex-col md:flex-row md:space-x-6 text-base font-semibold mt-10 md:mt-0">
+                    <a href="{% url 'home' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Home</a>
+                    <a href="{% url 'about' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/about/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">About</a>
+                    <a href="{% url 'products' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/products/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Products</a>
+                    <a href="{% url 'process' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/process/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Our Process</a>
+                    <a href="{% url 'aim' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/aim/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Our Aim</a>
+                    <a href="{% url 'blog' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/blog/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Blog</a>
+                    <a href="{% url 'contact' %}" class="block px-6 md:px-0 text-white hover:text-green-300 transition border-l-4 md:border-l-0 md:border-b-2 {% if request.path == '/contact/' %}font-bold border-green-300 text-green-300{% else %}border-transparent{% endif %}">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    function toggleMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('hidden');
+        const menuContent = navMenu.querySelector('div');
+        if (!navMenu.classList.contains('hidden')) {
+            menuContent.classList.remove('translate-x-full');
+            menuContent.classList.add('translate-x-0');
+        } else {
+            menuContent.classList.remove('translate-x-0');
+            menuContent.classList.add('translate-x-full');
+        }
+    }
+    // Auto-scroll to content for non-home pages
+    window.addEventListener('load', () => {
+        if (window.location.pathname !== '/') {
+            const content = document.getElementById('page-content');
+            if (content) {
+                content.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
+
+<!-- Hero Section -->
+<section class="relative w-screen h-screen bg-cover bg-center" style="background-image: url('/static/image3.avif')">
+    <!-- bg-black bg-opacity-60 -->  <div class="absolute inset-0   flex items-center justify-center">
+        <div class="text-center text-white px-4">
+            <br><br><br>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+                Grow Green with <span class="text-green-400">Agrofer</span>
+            </h1>
+            <br>
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 max-w-4xl mx-auto leading-relaxed">
+                From Hair to Harvest — Cultivating Growth, Naturally.
+            </h2>
+            
+            <p class="text-base sm:text-lg lg:text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-200">
+                Sustainable fertilizers from recycled human hair, nourishing the earth for future generations.
+            </p>
+            <br>
+            <a href="{% url 'products' %}" class="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+
+                Shop Now
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Main Content -->
+    <main class="w-full">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+<footer class="bg-green-900 text-white p-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1 md:col-span-2">
+            <h3 class="text-xl font-bold mb-4">Agrofer: Sustainable Innovation</h3>
+            <p class="text-sm leading-relaxed mb-4">At Agrofer, we transform human hair into eco-friendly fertilizers, pioneering sustainable agriculture for a greener planet. Our mission is to reduce waste, enrich soils, and empower farmers with innovative, environmentally conscious solutions.</p>
+            <p class="text-sm font-semibold">Join us in cultivating a sustainable future!</p>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+                <li><a href="{% url 'home' %}" class="hover:text-green-300">Home</a></li>
+                <li><a href="{% url 'about' %}" class="hover:text-green-300">About Us</a></li>
+                <li><a href="{% url 'products' %}" class="hover:text-green-300">Products</a></li>
+                <li><a href="{% url 'process' %}" class="hover:text-green-300">Our Process</a></li>
+                <li><a href="{% url 'aim' %}" class="hover:text-green-300">Our Aim</a></li>
+                <li><a href="{% url 'blog' %}" class="hover:text-green-300">Blog</a></li>
+                <li><a href="{% url 'contact' %}" class="hover:text-green-300">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Connect</h3>
+            <p class="text-sm mb-2">Email: <a href="mailto:agrofer.info@gmail.com" class="hover:text-green-300">agrofer.info@gmail.com</a></p>
+            <p class="text-sm mb-2">Phone: <a href="tel:+923104358786" class="hover:text-green-300">+92 310 4358786</a></p>
+            <p class="text-sm mb-2">Address: 123 Green Fields, Lahore, Pakistan</p>
+            <p class="text-sm mt-4 mb-2">Follow us on social media!</p>
+            <div class="flex space-x-4 mt-2">
+                <a href="https://www.linkedin.com/in/agroferfertilizers" target="_blank" class="text-green-300 hover:text-green-400">LinkedIn</a>
+                <a href="https://www.facebook.com/profile.php?id=61575301738287" target="_blank" class="text-green-300 hover:text-green-400">Facebook</a>
+                <a href="https://www.instagram.com/agrofer_fertilizers/" target="_blank" class="text-green-300 hover:text-green-400">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <p class="text-center text-sm mt-8">© 2025 Agrofer. All rights reserved.</p>
+    <p class="text-center text-sm mt-2 text-gray-300">Developed by <a href="https://github.com/Talhawkk" target="_blank" class="text-green-300 hover:text-green-400">Talhawkk</a></p>
+</footer>
+</body>
+</html>

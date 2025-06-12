@@ -1,0 +1,62 @@
+<!-- about.html -->
+{% extends 'base.html' %}
+{% block title %}About - Agrofer{% endblock %}
+{% block content %}
+<div id="page-content">
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl font-bold text-green-900 mb-8 text-center">About Agrofer</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <h2 class="text-2xl font-semibold text-green-900 mb-4">Our Story</h2>
+                    <p class="text-lg text-gray-600 mb-4">It all started with a simple question: What if waste could grow life? At AGROFER, we looked at the piles of discarded human and animal hair — a material rich in nutrients yet thrown away every day — and saw untapped potential. Inspired by nature’s ability to recycle everything, we set out to create something powerful, natural, and sustainable.</p>
+                    <p class="text-lg text-gray-600 mb-4">After months of experimentation and research, we developed a process to transform hair into a nutrient-rich liquid fertilizer, full of essential elements. Today, we’re proud to offer farmers and gardeners a sustainable alternative to chemical fertilizers, proving that even waste can grow a better future..</p>
+                </div>
+                <img src="/static/image2.jpg" alt="Team Work" class="w-full h-64 lg:h-96 object-cover rounded-lg">
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Our Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="/static/sairah.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <p class="text-xl font-semibold text-green-900">Saira</p>
+                    <p class="text-gray-600">CEO and Founder</p>
+                    <p class="text-sm text-gray-600 mt-2">Leads innovation in fertilizer production with 10+ years in environmental science.</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="/static/shahzaib.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <p class="text-xl font-semibold text-green-900">Shahzaib</p>
+                    <p class="text-gray-600">Chemical Analyst</p>
+                    <p class="text-sm text-gray-600 mt-2">Manages our supply chain to ensure sustainability.</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="/static/wajid.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <p class="text-xl font-semibold text-green-900">Wajid</p>
+                    <p class="text-gray-600">Supply Chain Manager</p>
+                    <p class="text-sm text-gray-600 mt-2">Advocates for eco-friendly farming practices.</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="/static/sf.png" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <p class="text-xl font-semibold text-green-900">M. Talha</p>
+                    <p class="text-gray-600">Software Engineer</p>
+                    <p class="text-sm text-gray-600 mt-2">Spreads the word about Agrofer’s mission.</p>
+                </div>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-900 mb-8 text-center">Our Milestones</h2>
+            <div class="space-y-6">
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-xl font-semibold text-green-900">2024: Founded Agrofer</p>
+                    <p class="text-lg text-gray-600">Launched our first lab to process human hair into fertilizers.</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-xl font-semibold text-green-900">2024: First Partnership</p>
+                    <p class="text-lg text-gray-600">Collaborated with 50 salons to collect hair sustainably.</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6">
+                    <p class="text-xl font-semibold text-green-900">2025: Scaled Production</p>
+                    <p class="text-lg text-gray-600">Expanded to serve 1,000+ farmers across Pakistan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

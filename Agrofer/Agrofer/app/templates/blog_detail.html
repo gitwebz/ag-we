@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} - Agrofer{% endblock %}
+{% block content %}
+<div id="page-content">
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl font-bold text-green-900 mb-4 animate-on-scroll">{{ post.title }}</h1>
+            <p class="text-gray-600 text-sm mb-8 animate-on-scroll">Posted on {{ post.created_at|date:"F d, Y" }} by <span class="text-green-900 font-semibold">Agrofer Team</span></p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}"  class="w-full h-64 sm:h-96 object-cover rounded-xl shadow-lg mb-12 animate-on-scroll">
+            {% else %}
+                <img src="https://via.placeholder.com/1200x400" alt="Placeholder" class="w-full h-64 sm:h-96 object-cover rounded-xl shadow-lg mb-12 animate-on-scroll">
+            {% endif %}
+            <div class="prose max-w-3xl mx-auto text-lg text-gray-600 mb-12 animate-on-scroll" style="white-space: pre-wrap;">
+                {{ post.content|safe }}
+            </div>
+            <h2 class="text-3xl font-semibold text-green-900 mb-6 animate-on-scroll">About the Author</h2>
+            <div class="bg-gray-100 rounded-xl p-8 mb-12 animate-on-scroll">
+                <p class="text-xl font-semibold text-green-900 mb-2">Agrofer Team</p>
+                <p class="text-lg text-gray-600">Our team of experts shares insights on sustainable agriculture to empower farmers worldwide. We are passionate about creating a greener future through innovative solutions like our human hair-based fertilizers.</p>
+            </div>
+            <h2 class="text-3xl font-semibold text-green-900 mb-6 animate-on-scroll">Related Posts</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                {% for related_post in related_posts %}
+                    <a href="{% url 'blog_detail' related_post.id %}" class="bg-gray-100 rounded-xl p-6 hover:shadow-xl transition transform hover:-translate-y-1 animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-green-900 mb-2">{{ related_post.title }}</h3>
+                        <p class="text-gray-600 text-sm">{{ related_post.created_at|date:"F d, Y" }}</p>
+                    </a>
+                {% empty %}
+                    <p class="text-gray-600 col-span-2 text-center">No related posts available.</p>
+                {% endfor %}
+            </div>
+            <h2 class="text-3xl font-semibold text-green-900 mb-6 animate-on-scroll">Comments</h2>
+            <div class="bg-gray-100 rounded-xl p-8 animate-on-scroll">
+                <p class="text-gray-600">No comments yet. Be the first to share your thoughts! (Comments functionality coming soon.)</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
